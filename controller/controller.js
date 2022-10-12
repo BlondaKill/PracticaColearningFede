@@ -41,4 +41,20 @@ const crearItem = async (req, res) =>{
     }
 }
 
-  module.exports = {indexController, vistaGeneral, vistaUnica, busqueda, crearItem}
+const editarItem = async (req, res) =>{
+  try {
+    const err = validationResult(req)
+    if (err.isEmpty()) {
+       await Gamer.findByIdAndUpdate(req.params.id, req.body)
+       res.status(201).json({msg: "se actualizo"})
+    } else {
+        res.status(501).json(err)
+    }
+      
+  } catch (error) {
+    res.status(501).json({error})
+
+  }
+}
+
+  module.exports = {indexController, vistaGeneral, vistaUnica, busqueda, crearItem, editarItem}

@@ -19,7 +19,12 @@ router.post('/crear',[
     check("stock").not().isEmpty().withMessage("se tiene que cargar si esta en stock")
 ],crearItem)
 
-
+//put
+router.put('/editar/:id',validar,[
+    check("name").not().isEmpty().withMessage("se tiene que cargar un nombre"),
+    check("price").not().isEmpty().withMessage("se tiene que cargar un precio").isLength({min:0}).withMessage("precio invalido"),
+    check("stock").not().isEmpty().withMessage("se tiene que cargar si esta en stock")
+],editarItem)
 
 
 

@@ -4,7 +4,7 @@ const validar = async (req, res, next) => {
     if (item !== null) {
         next()
     } else {
-        res.json({msg: "el id es invalido, no existe"})   
+        res.status(500).json({msg: "el id es invalido, no existe"})   
     }
 
 }

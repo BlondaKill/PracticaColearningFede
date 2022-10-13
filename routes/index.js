@@ -1,8 +1,9 @@
 const express = require("express")
 const router = express.Router() 
-const {indexController, vistaGeneral, vistaUnica, busqueda, crearItem} = require("../controller/controller")
+const {indexController, vistaGeneral, vistaUnica, busqueda, crearItem, editarItem, elimirItem} = require("../controller/controller")
 const {validar} = require("../middleware/validarId")
 const {check} = require("express-validator") 
+
 
 
 
@@ -25,6 +26,9 @@ router.put('/editar/:id',validar,[
     check("price").not().isEmpty().withMessage("se tiene que cargar un precio").isLength({min:0}).withMessage("precio invalido"),
     check("stock").not().isEmpty().withMessage("se tiene que cargar si esta en stock")
 ],editarItem)
+
+//delete
+router.delete('/eliminar/:id', validar, elimirItem)
 
 
 

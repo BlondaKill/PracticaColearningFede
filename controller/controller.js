@@ -57,4 +57,12 @@ const editarItem = async (req, res) =>{
   }
 }
 
-  module.exports = {indexController, vistaGeneral, vistaUnica, busqueda, crearItem, editarItem}
+const elimirItem = async (req, res)=>{
+  item = await Gamer.findByIdAndDelete(req.params.id)
+  res.status(200).json({msg: "el item siguiente se elimino correctamente", item})
+}
+
+
+
+
+  module.exports = {indexController, vistaGeneral, vistaUnica, busqueda, crearItem, editarItem, elimirItem}
